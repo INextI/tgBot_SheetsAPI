@@ -2,7 +2,7 @@ import asyncio
 from config import TOKEN, CHANNEL_ID, COUNT_MATHCES, ADMIN_ID
 import config
 from aiogram import Bot, Dispatcher, types
-from sheets.sheets_api import post_match
+from sheets.processing_data import post_match
 from sheets.posted import mark_matches_as_posted
 from sheets.func_get import post_match_for_get
 from aiogram.filters.command import Command

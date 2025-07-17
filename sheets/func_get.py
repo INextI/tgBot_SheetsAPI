@@ -1,6 +1,6 @@
 from datetime import datetime
 import logging
-from .sheets_api import get_data
+from .processing_data import get_data
 
 def get_matches_today(matches: dict) -> list[tuple[str, dict]]:
     now = datetime.now()
