@@ -19,8 +19,9 @@ def get_matches_today(matches: dict) -> list[tuple[str, dict]]:
     return matches_today
 
 def post_match_for_get():
+    sheet_nums = [9] #[3,4,5] [7]
     try:
-        matches = get_data()
+        matches = get_data(sheet_nums)
         matches_today = get_matches_today(matches)
         logging.info("Вызвана post_match_for_get() с помощью команды /get")
         return matches_today

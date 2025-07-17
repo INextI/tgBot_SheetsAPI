@@ -1,6 +1,5 @@
 from config import MONTHS_RU
 from datetime import datetime
-import hashlib
 
 def to_datetime(date: str, time: str) -> datetime:
     current_year = datetime.now().year
@@ -15,7 +14,3 @@ def to_datetime(date: str, time: str) -> datetime:
     except ValueError as ve:
         raise ValueError(f"Ошибка парсинга времени: {ve}")
     
-
-def get_sheet_hash(data: list[list[str]]) -> str:
-    flat_data = ''.join(''.join(row) for row in data)
-    return hashlib.md5(flat_data.encode('utf-8')).hexdigest()

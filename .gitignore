@@ -3,5 +3,5 @@
 __pycache__/
 credentials.json
 json_db/
-#config.py
+config.py
 bot.log
