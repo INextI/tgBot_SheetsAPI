@@ -1,3 +1,7 @@
 .venv/
 .env
 __pycache__/
+credentials.json
+json_db/
+#config.py
+bot.log
