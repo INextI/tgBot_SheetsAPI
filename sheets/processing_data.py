@@ -6,8 +6,6 @@ from collections import OrderedDict
 import logging
 from .utils import to_datetime
 from .api import sheet_request
-from .hashes import check_updated_sheets
-from .posted import get_finished_matches_today_unposted
 
 
 def get_data(nums_of_sheet: list[int]) -> dict:
@@ -54,27 +52,3 @@ def get_data(nums_of_sheet: list[int]) -> dict:
     with open(JSON_DUMP, 'w', encoding='utf-8') as f:
         json.dump(matches, f, indent=4, ensure_ascii=False)
     return matches
-
-
-def update():
-    sheet_nums = [9] #[3,4,5] [7]
-    updated_sheets = check_updated_sheets(sheet_nums)
-    if updated_sheets == None:
-        return False
-    data = get_data(sheet_nums)
-    return data
-
-
-def post_match():
-    matches = update()
-    if matches:
-        logging.info("Таблица обновилась")
-        new_matches, today_matches, count_today_matches = get_finished_matches_today_unposted(matches)
-        if new_matches:
-            logging.info("Есть завершенный матч")
-            return new_matches, today_matches, count_today_matches
-        else:
-            logging.info("Матч ещё не завершён")
-            return False  
-    else:
-        return False
