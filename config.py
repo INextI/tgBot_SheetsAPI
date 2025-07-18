@@ -41,8 +41,12 @@ JSON_DUMP = "json_db/json_dump.json"
 HASHES = "json_db/sheet_hashes.json"
 POSTED_FILE = "json_db/posted_matches.json"
 
-TOKEN = os.getenv("TOKEN")
+#TOKEN = os.getenv("TOKEN")
 
 CHANNEL_ID = os.getenv("CHANNEL_ID")
 SHEET_ID = os.getenv("SHEET_ID")
 ADMIN_ID = os.getenv('ADMIN_ID')
+ADMIN2_ID = os.getenv('ADMIN2_ID')
+
+from test import token
+TOKEN = token
