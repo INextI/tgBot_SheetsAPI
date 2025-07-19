@@ -4,6 +4,7 @@ from aiogram.filters.command import Command
 from aiogram.types import Message
 from sheets.func_get import post_match_for_get
 from aiogram.enums.parse_mode import ParseMode
+from bot.create_bot import ADMINS_ID, bot
 
 user_router = Router()
 
@@ -27,8 +28,15 @@ async def get_data(message: Message):
             logging.error("❌ Ошибка при проверке или отправке матчей:", exc_info=True)
 
 @user_router.message()
-async def echo(message: Message):
+async def send_message_to_admins(message: Message):
     try:
-        await message.send_copy(chat_id=message.chat.id)
+        text_from_user = f"""
+        Пользователь: {message.from_user.first_name} {message.from_user.last_name}\n
+        id: {message.from_user.id}\n
+        Отправил сообщение:\n
+        {message.text}""".strip()
+        
+        for admin_id in ADMINS_ID:
+            await bot.send_message(chat_id=admin_id, text=text_from_user)
     except TypeError:
         await message.answer("Nice try!")

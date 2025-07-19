@@ -10,21 +10,32 @@ def get_inline_menu_for_change_bo():
     ])
     return keyboard
 
-def get_menu():
+def get_main_menu():
     main_keyboard = [
-        [KeyboardButton(text='Настройка BO_N')],
+        [KeyboardButton(text='⚙️ Настройка BO_N')],
+        [KeyboardButton(text='📄 Поменять листы')],
+        [KeyboardButton(text='⏱️ Поменять задержку')],
+        [KeyboardButton(text='📃 Последние логи')],
         ]
-    bo_keyboard =[
-        [KeyboardButton(text="Установить BO7", callback_data="BO7")],
-        [KeyboardButton(text="Установить BO9", callback_data="BO9")],
-        [KeyboardButton(text="Установить BO13", callback_data="BO13")],
-        [KeyboardButton(text="⬅️ Назад")]
-        ]
-    
     menu = ReplyKeyboardMarkup(keyboard=main_keyboard, 
                                resize_keyboard=True, 
                                one_time_keyboard=False,
-                               input_field_placeholder='title'
+                               input_field_placeholder='Выберите действие'
                                )
-    
     return menu
+
+def get_bo_menu():
+    bo_keyboard = [
+        [KeyboardButton(text="Установить BO7")],
+        [KeyboardButton(text="Установить BO9")],
+        [KeyboardButton(text="Установить BO13")],
+        [KeyboardButton(text="⬅️ Назад")],
+    ]
+
+    bo_menu = ReplyKeyboardMarkup(keyboard=bo_keyboard,
+                                  resize_keyboard= True,
+                                  one_time_keyboard= False,
+                                  input_field_placeholder='Выберите BO',
+                                  )
+    
+    return bo_menu
