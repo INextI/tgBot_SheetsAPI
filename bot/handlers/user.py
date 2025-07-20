@@ -30,11 +30,13 @@ async def get_data(message: Message):
 @user_router.message()
 async def send_message_to_admins(message: Message):
     try:
-        text_from_user = f"""
-        Пользователь: {message.from_user.first_name} {message.from_user.last_name}\n
-        id: {message.from_user.id}\n
-        Отправил сообщение:\n
-        {message.text}""".strip()
+        text_from_user = (
+        f"Пользователь: {message.from_user.first_name} {message.from_user.last_name}\n"
+        f"id: {message.from_user.id}\n"
+        f"link: @{message.from_user.username}\n"
+        "Отправил сообщение:\n"
+        f"{message.text}"
+        )
         
         for admin_id in ADMINS_ID:
             await bot.send_message(chat_id=admin_id, text=text_from_user)

@@ -2,8 +2,11 @@ import os
 
 from dotenv import load_dotenv
 from zoneinfo import ZoneInfo
+from pathlib import Path
 
 load_dotenv()
+
+BASE_DIR = Path(__file__).parent
 
 TIME_ZONE = ZoneInfo("Europe/Moscow")
 
@@ -35,7 +38,11 @@ COUNT_MATHCES = {
 
 }
 
-BO_N = 5
+LOG_FILE = BASE_DIR / 'logs/bot.log'
+
+BO_N = 4
+
+DELAY = 300
 
 JSON_DUMP = "json_db/json_dump.json"
 HASHES = "json_db/sheet_hashes.json"

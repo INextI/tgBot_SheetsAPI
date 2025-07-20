@@ -1,6 +1,7 @@
 import logging
 import asyncio
 import random
+import config
 from ..create_bot import bot
 from sheets.main import post_match
 from sheets.posted import mark_matches_as_posted
@@ -30,7 +31,7 @@ async def match_watcher():
 
                             text = f"🏆 {text_match} завершён: \n\n<b>{match_data['Команда 1']}</b> <span class=\"tg-spoiler\"> {match_data['Счет 1']} </span>:<span class=\"tg-spoiler\"> {match_data['Счет 2']} </span> <b>{match_data['Команда 2']}</b>"
                             parse_mode = ParseMode.HTML
-                            await asyncio.sleep(300) # Задержка отправки
+                            await asyncio.sleep(config.DELAY) # Задержка отправки
                             await bot.send_message(CHANNEL_ID, text=text, parse_mode=parse_mode)
                             logging.info(f"📨 Отправлено сообщение: {text} в канал {CHANNEL_ID}")
                             mark_matches_as_posted([t for t, _ in matches])

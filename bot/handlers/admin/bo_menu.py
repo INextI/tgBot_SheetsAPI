@@ -1,27 +1,16 @@
 import config
-from aiogram import Router, F
-from aiogram.types import Message, CallbackQuery
-from aiogram.filters.command import Command
-from bot.menu.admin import get_main_menu, get_bo_menu
-from bot.decorators import admin_only
+from aiogram import F
 from bot.create_bot import ADMINS_ID, bot
-
-admin_router = Router()
-
-@admin_router.message(Command('menu'))
-@admin_only
-async def admin_menu(message: Message):
-    await message.answer("Админ-меню:", reply_markup=get_main_menu())
+from aiogram.types import Message
+from bot.menu.admin import get_bo_menu, get_main_menu
+from aiogram.filters.command import Command
+from bot.decorators import admin_only
+from . import admin_router
 
 @admin_router.message(F.text == '⚙️ Настройка BO_N')
 @admin_only
 async def open_bo_menu(message: Message):
     await message.answer("BO меню", reply_markup=get_bo_menu())
-
-@admin_router.message(F.text == '⬅️ Назад')
-@admin_only
-async def open_bo_menu(message: Message):
-    await message.answer("Вы вернулись в админ-меню", reply_markup=get_main_menu())
 
 @admin_router.message(F.text == 'Установить BO7')
 @admin_only
@@ -43,6 +32,3 @@ async def set_bo13(message: Message):
     config.BO_N = 7
     for admin_id in ADMINS_ID:
         await bot.send_message(admin_id, text='Установлено BO13 (до 7 побед)')
-    
-
-     

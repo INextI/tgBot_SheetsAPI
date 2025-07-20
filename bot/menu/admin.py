@@ -39,3 +39,21 @@ def get_bo_menu():
                                   )
     
     return bo_menu
+
+def get_delay_menu():
+    delay_keyboard = [
+        [KeyboardButton(text='Без задержки')],
+        [KeyboardButton(text='1 мин')],
+        [KeyboardButton(text='3 мин')],
+        [KeyboardButton(text='5 мин')],
+        [KeyboardButton(text='7 мин')],
+        [KeyboardButton(text='10 мин')],
+        [KeyboardButton(text="⬅️ Назад")],
+    ]
+
+    del_menu = ReplyKeyboardMarkup(keyboard=delay_keyboard,
+                                   resize_keyboard=True,
+                                   one_time_keyboard=False,
+                                   input_field_placeholder='Выберите время задержки')
+    return del_menu
+
