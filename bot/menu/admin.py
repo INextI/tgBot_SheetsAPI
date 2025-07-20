@@ -16,6 +16,7 @@ def get_main_menu():
         [KeyboardButton(text='📄 Поменять листы')],
         [KeyboardButton(text='⏱️ Поменять задержку')],
         [KeyboardButton(text='📃 Последние логи')],
+        [KeyboardButton(text='ℹ️ Инфо')],
         ]
     menu = ReplyKeyboardMarkup(keyboard=main_keyboard, 
                                resize_keyboard=True, 

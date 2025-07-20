@@ -3,12 +3,15 @@ import os
 from dotenv import load_dotenv
 from zoneinfo import ZoneInfo
 from pathlib import Path
+from datetime import datetime
 
 load_dotenv()
 
 BASE_DIR = Path(__file__).parent
 
 TIME_ZONE = ZoneInfo("Europe/Moscow")
+
+START_TIME = datetime.now(TIME_ZONE)
 
 MONTHS_RU = {
     'января': 'January',
