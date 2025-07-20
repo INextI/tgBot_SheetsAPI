@@ -44,6 +44,8 @@ BO_N = 4
 
 DELAY = 300
 
+SHEET_LIST = [9] #[3,4,5] [7]
+
 JSON_DUMP = "json_db/json_dump.json"
 HASHES = "json_db/sheet_hashes.json"
 POSTED_FILE = "json_db/posted_matches.json"

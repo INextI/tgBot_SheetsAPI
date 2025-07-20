@@ -1,14 +1,14 @@
 import logging
+from config import SHEET_LIST
 from .hashes import check_updated_sheets
 from .processing_data import get_data
 from .posted import get_finished_matches_today_unposted
 
 def update():
-    sheet_nums = [9] #[3,4,5] [7]
-    updated_sheets = check_updated_sheets(sheet_nums)
+    updated_sheets = check_updated_sheets(SHEET_LIST)
     if updated_sheets == None:
         return False
-    data = get_data(sheet_nums)
+    data = get_data(SHEET_LIST)
     return data
 
 

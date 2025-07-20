@@ -1,6 +1,7 @@
 from datetime import datetime
 import logging
 from .processing_data import get_data
+from config import SHEET_LIST
 
 def get_matches_today(matches: dict) -> list[tuple[str, dict]]:
     now = datetime.now()
@@ -19,9 +20,8 @@ def get_matches_today(matches: dict) -> list[tuple[str, dict]]:
     return matches_today
 
 def post_match_for_get():
-    sheet_nums = [9] #[3,4,5] [7]
     try:
-        matches = get_data(sheet_nums)
+        matches = get_data(SHEET_LIST)
         matches_today = get_matches_today(matches)
         logging.info("Вызвана post_match_for_get() с помощью команды /get")
         return matches_today
