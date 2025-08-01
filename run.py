@@ -5,9 +5,11 @@ from bot.create_bot import bot, dp, start_bot, stop_bot
 from bot.services.watcher import match_watcher
 from bot.handlers.admin import admin_router
 from bot.handlers.user import user_router
+from setup import create_jsondb_dir
 
 
 async def main():
+    create_jsondb_dir()
     dp.include_routers(admin_router, user_router)
 
     dp.startup.register(start_bot)

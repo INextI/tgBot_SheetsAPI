@@ -47,18 +47,20 @@ BO_N = 4
 
 DELAY = 300
 
-SHEET_LIST = [9] #[3,4,5] [7]
+SHEET_LIST = [10] #[3,4,5] [7] , [9]
 
-JSON_DUMP = "json_db/json_dump.json"
-HASHES = "json_db/sheet_hashes.json"
-POSTED_FILE = "json_db/posted_matches.json"
+JSON_DIR = BASE_DIR / 'json_db'
 
-#TOKEN = os.getenv("TOKEN")
+JSON_DUMP = JSON_DIR / "json_dump.json"
+HASHES = JSON_DIR / "sheet_hashes.json"
+POSTED_FILE = JSON_DIR / "posted_matches.json"
+
+TOKEN = os.getenv("TOKEN")
 
 CHANNEL_ID = os.getenv("CHANNEL_ID")
 SHEET_ID = os.getenv("SHEET_ID")
 ADMIN_ID = os.getenv('ADMIN_ID')
 ADMIN2_ID = os.getenv('ADMIN2_ID')
 
-from test import token
-TOKEN = token
+# from test import token
+# TOKEN = token
